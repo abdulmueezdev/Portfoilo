@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul-Mueez - Web Developer & DevOps Engineer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-section">
+                <img src="images/profile.jpg" alt="Profile" class="profile-image">
+                <h2 class="profile-name">Abdul-Mueez</h2>
+                <p class="profile-title">Web Developer | DevOps Engineer</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+            <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+            <li><a href="#resume" class="nav-link" data-section="resume">Resume</a></li>
+            <li><a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+                <span class="toggle-icon">🌙</span>
+            </button>
+        </div>
+
+        <div class="active-indicator" id="activeIndicator"></div>
+    </nav>
+
+    <!-- Hamburger Menu for Mobile -->
+    <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section hero-section">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1 class="hero-title">Hi There!</h1>
+                    <h2 class="hero-subtitle">I'm <span class="accent-text">Abdul-Mueez</span></h2>
+                    <p class="hero-tagline">Web Developer | DevOps Engineer</p>
+                    <p class="hero-description">
+                        Passionate about building scalable web applications and robust deployment pipelines. Specialized in modern web technologies and cloud infrastructure. Let's create something amazing together!
+                    </p>
+                    <a href="#about" class="btn btn-primary">More About Me</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="Abdul-Mueez" class="profile-hero">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="section-container">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-intro">
+                    I'm Abdul-Mueez, a passionate Web Developer and DevOps Engineer with expertise in building modern, scalable applications and managing cloud infrastructure. I specialize in full-stack development and CI/CD pipeline optimization.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number">5+</h3>
+                        <p class="stat-label">Years Experience</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">50+</h3>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">30+</h3>
+                        <p class="stat-label">Happy Clients</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">100%</h3>
+                        <p class="stat-label">Client Satisfaction</p>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">What I Do</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h4>Web Development</h4>
+                        <p>Building modern, responsive web applications using React, Node.js, and other cutting-edge technologies.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h4>DevOps & CI/CD</h4>
+                        <p>Designing and implementing robust deployment pipelines, containerization, and infrastructure automation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">☁️</div>
+                        <h4>Cloud Infrastructure</h4>
+                        <p>Managing cloud environments on AWS, Google Cloud, and Azure with focus on scalability and security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section resume-section">
+            <div class="section-container">
+                <h2 class="section-title">Resume</h2>
+
+                <div class="resume-grid">
+                    <div class="resume-column">
+                        <h3 class="resume-subtitle">Education</h3>
+                        <div class="resume-item">
+                            <h4>Bachelor of Science in Computer Science</h4>
+                            <p class="resume-org">National University of Computer and Emerging Sciences</p>
+                            <p class="resume-date">2020 - 2024</p>
+                            <p>Focused on software engineering, algorithms, and data structures. Completed comprehensive coursework in computer science fundamentals.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-column">
+                        <h3 class="resume-subtitle">Experience</h3>
+                        <div class="resume-item">
+                            <h4>Senior Web Developer</h4>
+                            <p class="resume-org">Tech Solutions Inc.</p>
+                            <p class="resume-date">2023 - Present</p>
+                            <p>Leading development of large-scale web applications, mentoring junior developers, and optimizing deployment pipelines.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>DevOps Engineer</h4>
+                            <p class="resume-org">Cloud Innovations LLC</p>
+                            <p class="resume-date">2021 - 2023</p>
+                            <p>Managed cloud infrastructure, implemented CI/CD pipelines, and improved system reliability and scalability.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3 class="resume-subtitle">Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">React</div>
+                        <div class="skill-tag">Node.js</div>
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">Docker</div>
+                        <div class="skill-tag">Kubernetes</div>
+                        <div class="skill-tag">AWS</div>
+                        <div class="skill-tag">Git</div>
+                        <div class="skill-tag">Linux</div>
+                        <div class="skill-tag">MongoDB</div>
+                        <div class="skill-tag">PostgreSQL</div>
+                        <div class="skill-tag">CI/CD</div>
+                    </div>
+                </div>
+
+                <div class="certifications-section">
+                    <h3 class="resume-subtitle">Certifications</h3>
+                    <div class="cert-grid">
+                        <div class="cert-item">
+                            <h4>AWS Solutions Architect</h4>
+                            <p class="cert-issuer">Amazon Web Services</p>
+                            <p class="cert-date">2023</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Kubernetes Administrator</h4>
+                            <p class="cert-issuer">Linux Foundation</p>
+                            <p class="cert-date">2023</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Docker Certified Associate</h4>
+                            <p class="cert-issuer">Docker</p>
+                            <p class="cert-date">2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section portfolio-section">
+            <div class="section-container">
+                <h2 class="section-title">Portfolio</h2>
+
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="devops">DevOps</button>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-card" data-category="web">
+                        <div class="portfolio-image">
+                            <img src="images/project1.jpg" alt="E-Commerce Platform">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>E-Commerce Platform</h4>
+                            <p>Full-stack React and Node.js e-commerce application with payment integration and admin dashboard.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card" data-category="devops">
+                        <div class="portfolio-image">
+                            <img src="images/project2.jpg" alt="CI/CD Pipeline">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Automated CI/CD Pipeline</h4>
+                            <p>Designed and implemented complete CI/CD pipeline using GitLab, Docker, and Kubernetes for microservices.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">GitLab</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card" data-category="web">
+                        <div class="portfolio-image">
+                            <img src="images/project3.jpg" alt="Task Management App">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Task Management Application</h4>
+                            <p>Collaborative task management app with real-time updates, team collaboration features, and analytics dashboard.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card" data-category="devops">
+                        <div class="portfolio-image">
+                            <img src="images/project4.jpg" alt="Infrastructure as Code">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Infrastructure as Code</h4>
+                            <p>Terraform-based infrastructure management for AWS environments with automated scaling and monitoring.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Terraform</span>
+                                <span class="tag">AWS</span>
+                                <span class="tag">CloudWatch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-intro">
+                    I'm always interested in hearing about new opportunities and exciting projects. Feel free to reach out!
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:abdulmueez@email.com">abdulmueez@email.com</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+923001234567">+92 (300) 123-4567</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h4>Location</h4>
+                        <p>Lahore, Pakistan</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+
+                <p class="contact-footer">Thanks for your patience! I typically respond within 24 hours.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
