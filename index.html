@@ -208,14 +208,32 @@
 
         /* Simplify animations on mobile */
         @media (max-width: 768px) {
+
+            /* CRITICAL: Remove navbar blur (biggest remaining bottleneck) */
+            nav {
+                backdrop-filter: none !important;
+                background: rgba(248, 215, 148, 0.95) !important;
+            }
+
+            .dark nav {
+                background: rgba(17, 14, 13, 0.95) !important;
+            }
+
+            /* CRITICAL: Disable scroll fade-in animations entirely */
             .scroll-animate {
-                transition-duration: 0.4s;
-                /* Remove transform animation on mobile, only fade */
+                opacity: 1 !important;
+                transform: translate3d(0, 0, 0) !important;
+                transition: none !important;
+            }
+
+            .scroll-animate.is-visible {
+                opacity: 1 !important;
                 transform: translate3d(0, 0, 0) !important;
             }
 
             .animate-fade-in-up {
-                animation-duration: 0.5s !important;
+                animation: none !important;
+                opacity: 1 !important;
             }
 
             /* Disable ALL hover effects on mobile (no mouse = no benefit, saves GPU) */
