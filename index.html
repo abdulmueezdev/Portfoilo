@@ -217,6 +217,31 @@
             .animate-fade-in-up {
                 animation-duration: 0.5s !important;
             }
+
+            /* Disable ALL hover effects on mobile (no mouse = no benefit, saves GPU) */
+            * {
+                /* Remove all transitions except essential ones */
+                transition: none !important;
+            }
+
+            /* Re-enable only critical transitions */
+            button,
+            a,
+            .nav-link {
+                transition: opacity 0.15s ease !important;
+            }
+
+            /* Remove hover state color changes (About section cards) */
+            .glass-card {
+                /* Lock background, no hover changes */
+                transition: none !important;
+            }
+
+            /* Remove hover transforms (Hero code card rotation) */
+            .hover\:rotate-0 {
+                /* Keep rotation at default */
+                transform: rotate(3deg) !important;
+            }
         }
     </style>
 </head>
