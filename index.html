@@ -52,12 +52,12 @@
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            '0%': { opacity: '0', transform: 'translate3d(0, 20px, 0)' },
+                            '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
                         },
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
+                            '50%': { transform: 'translate3d(0, -10px, 0)' },
                         }
                     }
                 },
@@ -76,14 +76,25 @@
 
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .dark .glass-card {
             background: rgba(52, 12, 12, 0.2);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(85, 65, 47, 0.3);
+        }
+
+        /* Reduce blur on mobile for better performance */
+        @media (max-width: 768px) {
+            .glass-card {
+                backdrop-filter: blur(4px);
+            }
+
+            .dark .glass-card {
+                backdrop-filter: blur(4px);
+            }
         }
 
         ::-webkit-scrollbar {
@@ -130,6 +141,62 @@
             transform: translateY(0);
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Mobile Menu */
+        #mobileMenu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        #mobileMenu.active {
+            transform: translateX(0);
+        }
+
+        #menuOverlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #menuOverlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* GPU-Accelerated Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .scroll-animate.animation-complete {
+            will-change: auto;
+        }
+
+        /* Stagger animations to prevent simultaneous rendering */
+        .scroll-animate:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        .scroll-animate:nth-child(2) {
+            transition-delay: 50ms;
+        }
+
+        .scroll-animate:nth-child(3) {
+            transition-delay: 100ms;
+        }
+
+        .scroll-animate:nth-child(4) {
+            transition-delay: 150ms;
         }
     </style>
 </head>
@@ -185,9 +252,50 @@
             <button onclick="toggleTheme()" class="p-2"><span
                     class="material-symbols-outlined block dark:hidden">dark_mode</span><span
                     class="material-symbols-outlined hidden dark:block">light_mode</span></button>
-            <button class="p-2"><span class="material-symbols-outlined">menu</span></button>
+            <button onclick="toggleMobileMenu()" class="p-2" aria-label="Toggle Menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menuOverlay" onclick="toggleMobileMenu()"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        class="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-[#F8D794] dark:bg-[#110E0D] z-50 md:hidden shadow-2xl">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b border-[#111A19]/10 dark:border-[#55412F]">
+                <span class="text-xl font-bold font-display text-[#111A19] dark:text-[#B59785]">Menu</span>
+                <button onclick="toggleMobileMenu()" class="p-2" aria-label="Close Menu">
+                    <span class="material-symbols-outlined text-[#111A19] dark:text-[#B59785]">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col p-6 gap-6 flex-1">
+                <a href="#hero" onclick="toggleMobileMenu()"
+                    class="nav-link text-lg font-medium text-[#111A19] dark:text-[#B59785] hover:text-[#BB6830] dark:hover:text-[#640606] transition-colors">
+                    Home
+                </a>
+                <a href="#about" onclick="toggleMobileMenu()"
+                    class="nav-link text-lg font-medium text-[#111A19] dark:text-[#B59785] hover:text-[#BB6830] dark:hover:text-[#640606] transition-colors">
+                    About
+                </a>
+                <a href="#skills" onclick="toggleMobileMenu()"
+                    class="nav-link text-lg font-medium text-[#111A19] dark:text-[#B59785] hover:text-[#BB6830] dark:hover:text-[#640606] transition-colors">
+                    Skills
+                </a>
+                <a href="#portfolio" onclick="toggleMobileMenu()"
+                    class="nav-link text-lg font-medium text-[#111A19] dark:text-[#B59785] hover:text-[#BB6830] dark:hover:text-[#640606] transition-colors">
+                    Portfolio
+                </a>
+                <a href="#contact" onclick="toggleMobileMenu()"
+                    class="nav-link mt-auto px-6 py-3 rounded-lg bg-[#BB6830] dark:bg-[#340C0C] text-[#F8D794] dark:text-[#B59785] font-bold text-center hover:opacity-90 transition-opacity">
+                    Contact Me
+                </a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center pt-32 px-6 overflow-hidden">
@@ -637,9 +745,56 @@
     </button>
 
     <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
         // Wrap all initialization in DOMContentLoaded for GitHub Pages compatibility
         document.addEventListener('DOMContentLoaded', function () {
             const navbar = document.querySelector('nav');
+
+            // GPU-Accelerated Scroll Animations using Intersection Observer
+            const observerOptions = {
+                threshold: 0.05,
+                // Trigger earlier to promote layers before element enters viewport
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Trigger animation (will-change already set in CSS)
+                        entry.target.classList.add('is-visible');
+
+                        // Remove will-change after animation completes (600ms + delays)
+                        setTimeout(() => {
+                            entry.target.style.willChange = 'auto';
+                            entry.target.classList.add('animation-complete');
+                        }, 800);
+
+                        // Stop observing once animated
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Apply scroll animations to key sections
+            const animatedElements = document.querySelectorAll('.glass-card, #about > div, #skills > div, #contact > div');
+            animatedElements.forEach(el => {
+                el.classList.add('scroll-animate');
+                animationObserver.observe(el);
+            });
 
             // Smooth scroll navigation handler with offset for fixed navbar
             function smoothScrollToSection(targetId) {
@@ -678,14 +833,19 @@
                 }, 100);
             }
 
-            // Back to Top scroll handler
+            // Throttled Back to Top scroll handler
+            let scrollTimeout;
             window.onscroll = function () {
-                var btn = document.getElementById("backToTop");
-                if (document.documentElement.scrollTop > 300) {
-                    btn.classList.add("visible");
-                } else {
-                    btn.classList.remove("visible");
-                }
+                if (scrollTimeout) return;
+                scrollTimeout = setTimeout(() => {
+                    var btn = document.getElementById("backToTop");
+                    if (document.documentElement.scrollTop > 300) {
+                        btn.classList.add("visible");
+                    } else {
+                        btn.classList.remove("visible");
+                    }
+                    scrollTimeout = null;
+                }, 50);
             };
         });
 
